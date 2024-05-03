@@ -42,11 +42,18 @@ Route::prefix('/app')->group(function () {
     })->name('app.produtos');
 });
 
+Route::get('/rota1', function(){
+    echo 'rota 1';
+})->name('site.rota1');
 
+//! Duas maneiras de fazer direcionamento
+// Route::redirect('/rota2','/rota1');
+Route::get('/rota2', function(){
+    return redirect()->route('site.rota1');
+})->name('site.rota2');
+//! FIM
 
-
-
-
+//! Aqui está um exemplo de rota, que obriga os parametros que virem a ser verificados, caso seja vazio ou não, e o valorq ue irá vir
 // Route::get(
 //             '/contato/{nome?}/{categoria?}/{assunto?}/{mensagem?}',
 //             function (
@@ -70,3 +77,4 @@ Route::prefix('/app')->group(function () {
 //                 echo "Estamos aqui: $nome - $categoria_id";
 //             }
 // )->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+');
+//! FIM
