@@ -2,17 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 // Route::get('/', function () {
 //     return 'Olá, seja bem vindo ao curso!';
 // });
@@ -78,3 +67,7 @@ Route::get('/rota2', function(){
 //             }
 // )->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+');
 //! FIM
+
+Route::fallback(function(){
+    echo "A rota acessada não existe! <a href='" . route('site.index') . "'>Clique aqui para ir a página inicial</a>";
+});
