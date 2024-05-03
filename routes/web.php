@@ -23,6 +23,8 @@ Route::get('/sobre-nos', 'SobreNosController@sobreNos');
 
 Route::get('/contato', 'ContatoController@contato');
 
+
+
 // Route::get(
 //             '/contato/{nome?}/{categoria?}/{assunto?}/{mensagem?}',
 //             function (
@@ -36,13 +38,13 @@ Route::get('/contato', 'ContatoController@contato');
 //                     }
 //         );
 
-Route::get(
-    '/contato/{nome}/{categoria_id}',
-    function (
-                string $nome = 'Desconhecido',
-                int $categoria_id = 1 // 1 = 'informação'
-            )
-            {
-                echo "Estamos aqui: $nome - $categoria_id";
-            }
-)->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+');
+// Route::get(
+//     '/contato/{nome}/{categoria_id}',
+//     function (
+//                 string $nome = 'Desconhecido',
+//                 int $categoria_id = 1 // 1 = 'informação'
+//             )
+//             {
+//                 echo "Estamos aqui: $nome - $categoria_id";
+//             }
+// )->where('categoria_id', '[0-9]+')->where('nome', '[A-Za-z]+');
