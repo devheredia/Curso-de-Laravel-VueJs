@@ -29,17 +29,19 @@
 <br> --}}
 
 @isset($fornecedores)
-    Fornecedor: {{ $fornecedores[2]['nome'] }}
-    <br>
-    Status: {{ $fornecedores[2]['status'] }}
-    <br>
-    {{-- @isset($fornecedores[0]['cnpj'])
+    @for ($i = 0; isset($fornecedores[$i]); $i++)
+        Fornecedor: {{ $fornecedores[$i]['nome'] }}
+        <br>
+        Status: {{ $fornecedores[$i]['status'] }}
+        <br>
+        {{-- @isset($fornecedores[0]['cnpj'])
         CNPJ: {{ $fornecedores[0]['cnpj'] }}
     @endisset --}}
-    CNPJ: {{ $fornecedores[2]['cnpj'] ?? 'Dado não foi preenchido.' }}
-    <br>
-    Telefone: ({{ $fornecedores[2]['ddd'] }}) {{ $fornecedores[2]['telefone'] }}
-    @switch($fornecedores[2]['ddd'])
+        CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Dado não foi preenchido.' }}
+        <br>
+        Telefone: ({{ $fornecedores[$i]['ddd'] }}) {{ $fornecedores[$i]['telefone'] }}
+        <hr>
+        {{-- @switch($fornecedores[2]['ddd'])
         @case('11')
             São Paulo - SP
         @break
@@ -54,5 +56,8 @@
 
         @default
             Estado não identificado.
-    @endswitch
+    @endswitch --}}
+
+        <br>
+    @endfor
 @endisset
