@@ -29,7 +29,9 @@
 <br> --}}
 
 @isset($fornecedores)
-    @for ($i = 0; isset($fornecedores[$i]); $i++)
+    {{-- @for ($i = 0; isset($fornecedores[$i]); $i++) --}}
+    @php $i = 0; @endphp
+    @while (isset($fornecedores[$i]))
         Fornecedor: {{ $fornecedores[$i]['nome'] }}
         <br>
         Status: {{ $fornecedores[$i]['status'] }}
@@ -59,5 +61,8 @@
     @endswitch --}}
 
         <br>
-    @endfor
+        @php $i++ @endphp
+    @endwhile
+
+    {{-- @endfor --}}
 @endisset
