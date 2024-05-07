@@ -29,12 +29,30 @@
 <br> --}}
 
 @isset($fornecedores)
-    Fornecedor: {{ $fornecedores[0]['nome'] }}
+    Fornecedor: {{ $fornecedores[2]['nome'] }}
     <br>
-    Status: {{ $fornecedores[0]['status'] }}
+    Status: {{ $fornecedores[2]['status'] }}
     <br>
     {{-- @isset($fornecedores[0]['cnpj'])
         CNPJ: {{ $fornecedores[0]['cnpj'] }}
     @endisset --}}
-    CNPJ: {{ $fornecedores[1]['cnpj'] ?? 'Dado não foi preenchido.' }}
+    CNPJ: {{ $fornecedores[2]['cnpj'] ?? 'Dado não foi preenchido.' }}
+    <br>
+    Telefone: ({{ $fornecedores[2]['ddd'] }}) {{ $fornecedores[2]['telefone'] }}
+    @switch($fornecedores[2]['ddd'])
+        @case('11')
+            São Paulo - SP
+        @break
+
+        @case('32')
+            Juiz de Fora - MG
+        @break
+
+        @case('85')
+            Fortaleza - Ceará
+        @break
+
+        @default
+            Estado não identificado.
+    @endswitch
 @endisset
