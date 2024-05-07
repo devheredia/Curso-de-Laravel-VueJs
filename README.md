@@ -7,3 +7,8 @@ https://www.udemy.com/course/curso-completo-do-desenvolvedor-laravel/?couponCode
 Versão do composer: 1.10.7
 Versão Larável: 7x
 Versão Php:  7.4.6
+
+Porém o meu projeto foi atualizado por mim:
+Versão do composer: 2.7.6
+Versão Larável: 11x
+Versão Php:  8.2.0
