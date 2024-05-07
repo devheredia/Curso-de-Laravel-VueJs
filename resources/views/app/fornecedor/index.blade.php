@@ -30,18 +30,19 @@
 
 @isset($fornecedores)
     {{-- @for ($i = 0; isset($fornecedores[$i]); $i++) --}}
-    @php $i = 0; @endphp
-    @while (isset($fornecedores[$i]))
-        Fornecedor: {{ $fornecedores[$i]['nome'] }}
+    {{-- @php $i = 0; @endphp
+    @while (isset($fornecedores[$i])) --}}
+    @foreach ($fornecedores as $indice => $fornecedor)
+        Fornecedor: {{ $fornecedor['nome'] }}
         <br>
-        Status: {{ $fornecedores[$i]['status'] }}
+        Status: {{ $fornecedor['status'] }}
         <br>
         {{-- @isset($fornecedores[0]['cnpj'])
         CNPJ: {{ $fornecedores[0]['cnpj'] }}
     @endisset --}}
-        CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Dado não foi preenchido.' }}
+        CNPJ: {{ $fornecedor['cnpj'] ?? 'Dado não foi preenchido.' }}
         <br>
-        Telefone: ({{ $fornecedores[$i]['ddd'] }}) {{ $fornecedores[$i]['telefone'] }}
+        Telefone: ({{ $fornecedor['ddd'] }}) {{ $fornecedor['telefone'] }}
         <hr>
         {{-- @switch($fornecedores[2]['ddd'])
         @case('11')
@@ -61,8 +62,9 @@
     @endswitch --}}
 
         <br>
-        @php $i++ @endphp
-    @endwhile
+        {{-- @endfor --}}
+        {{-- @php $i++ @endphp
+    @endwhile --}}
+    @endforeach
 
-    {{-- @endfor --}}
 @endisset
