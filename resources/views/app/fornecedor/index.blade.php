@@ -34,9 +34,9 @@
     @while (isset($fornecedores[$i])) --}}
     {{-- @foreach ($fornecedores as $indice => $fornecedor) --}}
     @forelse ($fornecedores as $indice => $fornecedor)
-        Fornecedor: {{ $fornecedor['nome'] }}
+        Fornecedor: @{{ $fornecedor['nome'] }}
         <br>
-        Status: {{ $fornecedor['status'] }}
+        Status: @{{ $fornecedor['status'] }}
         <br>
         {{-- @isset($fornecedores[0]['cnpj'])
         CNPJ: {{ $fornecedores[0]['cnpj'] }}
