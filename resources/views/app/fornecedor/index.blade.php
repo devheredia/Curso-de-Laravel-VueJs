@@ -32,7 +32,8 @@
     {{-- @for ($i = 0; isset($fornecedores[$i]); $i++) --}}
     {{-- @php $i = 0; @endphp
     @while (isset($fornecedores[$i])) --}}
-    @foreach ($fornecedores as $indice => $fornecedor)
+    {{-- @foreach ($fornecedores as $indice => $fornecedor) --}}
+    @forelse ($fornecedores as $indice => $fornecedor)
         Fornecedor: {{ $fornecedor['nome'] }}
         <br>
         Status: {{ $fornecedor['status'] }}
@@ -65,6 +66,9 @@
         {{-- @endfor --}}
         {{-- @php $i++ @endphp
     @endwhile --}}
-    @endforeach
+    {{-- @endforeach --}}
+    @empty
+            Não existem fornecedores cadastrados.
+    @endforelse
 
 @endisset
