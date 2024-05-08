@@ -34,9 +34,13 @@
     @while (isset($fornecedores[$i])) --}}
     {{-- @foreach ($fornecedores as $indice => $fornecedor) --}}
     @forelse ($fornecedores as $indice => $fornecedor)
-        Fornecedor: @{{ $fornecedor['nome'] }}
+    {{-- @dd($loop) --}}
+        Interação atual:{{ $loop->iteration }}
         <br>
-        Status: @{{ $fornecedor['status'] }}
+        Fornecedor: {{ $fornecedor['nome'] }}
+        {{-- Fornecedor: @{{ $fornecedor['nome'] }} --}}
+        <br>
+        Status: {{ $fornecedor['status'] }}
         <br>
         {{-- @isset($fornecedores[0]['cnpj'])
         CNPJ: {{ $fornecedores[0]['cnpj'] }}
@@ -44,6 +48,15 @@
         CNPJ: {{ $fornecedor['cnpj'] ?? 'Dado não foi preenchido.' }}
         <br>
         Telefone: ({{ $fornecedor['ddd'] }}) {{ $fornecedor['telefone'] }}
+        <br>
+        @if ($loop->first)
+            Primeira interação do loop
+        @endif
+        @if ($loop->last)
+            Última interação do loop
+            <br>
+            Total de registros: {{$loop->count}}
+        @endif
         <hr>
         {{-- @switch($fornecedores[2]['ddd'])
         @case('11')
@@ -66,9 +79,9 @@
         {{-- @endfor --}}
         {{-- @php $i++ @endphp
     @endwhile --}}
-    {{-- @endforeach --}}
+        {{-- @endforeach --}}
     @empty
-            Não existem fornecedores cadastrados.
+        Não existem fornecedores cadastrados.
     @endforelse
 
 @endisset
