@@ -11,10 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('fornecedores', function (Blueprint $table) {
-            $table->string('uf', 2);
-            $table->string('email', 150);
-        });
+
     }
 
     /**
@@ -22,6 +19,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('fornecedores', function (Blueprint $table) {
+            $table->dropColum(['uf', 'email']);
+        });
     }
 };
