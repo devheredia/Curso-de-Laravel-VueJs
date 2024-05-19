@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-{{ print_r($motivo_contato) }}
+{{-- {{ print_r($motivo_contato) }} --}}
     <div class="rodape">
         <div class="redes-sociais">
             <h2>Redes sociais</h2>
