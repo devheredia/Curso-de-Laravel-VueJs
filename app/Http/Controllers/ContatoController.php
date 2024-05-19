@@ -40,13 +40,26 @@ class ContatoController extends Controller
     public function salvar(Request $request)
     {
         // dd($request);
-        $request->validate([
-            'nome' => 'required|min:3|max:40|unique:site_contatos',
+        $regras =  [
+            'nome' => 'required|min:3||max:255|unique:site_contatos',
             'telefone' => 'required',
-            'email' => 'email',
-            'motivo_contatos_id' => 'required',
-            'mensagem' => 'required|max:2000'
-        ]);
+            'email' => 'required|email|max:255',
+            'motivo_contatos_id' => 'required|exists:motivo_contatos,id',
+            'mensagem' => 'required|string',
+        ];
+
+        $feedback = [
+            'nome.required' => 'O campo nome precisa ser preenchido',
+            'nome.min' => 'O campo nome precisa ter no mínimo três caracteres',
+            'nome.max' => 'O campo nome deve ter no máximo 40 caracteres',
+            'nome.unique' => 'O nome informado já está em uso',
+            'telefone.required' => 'O campo telefone precisa ser preenchido',
+            'email.email' => 'O e-mail informado não é válido',
+            'mensagem.max' => 'A mensagem deve ter no máximo 2000 caracteres',
+
+            'required' => 'O campo :attribute não foi preenchido'
+        ];
+        $request->validate($regras, $feedback);
         SiteContato::create($request->all());
         return redirect()->route('site.index');
     }
