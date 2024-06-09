@@ -13,7 +13,7 @@ Route::middleware(LogAcessoMiddleware::class)->group(function () {
 });
 
 
-Route::prefix('/app')->middleware([LogAcessoMiddleware::class, AutenticacaoMiddleware::class])->group(function () {
+Route::prefix('/app')->middleware([LogAcessoMiddleware::class, AutenticacaoMiddleware::class . ':padrao'])->group(function () {
     Route::get('/fornecedores', 'App\Http\Controllers\FornecedorController@index')->name('app.fornecedores');
 });
 

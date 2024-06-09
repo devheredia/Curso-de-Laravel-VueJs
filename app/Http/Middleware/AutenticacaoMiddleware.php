@@ -13,13 +13,21 @@ class AutenticacaoMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, $metodo_autenticacao): Response
     {
-        if(true){
-            return $next($request);
-        } else{
-            return Response('Acesso negado! Rota exige autenticação !!!');
+            echo $metodo_autenticacao;
+        if($metodo_autenticacao == 'padrao'){
+            
         }
+
+        if($metodo_autenticacao == 'ldap'){
+            return $next($request);
+        }
+
+
+            // } else{
+        //     return Response('Acesso negado! Rota exige autenticação !!!');
+        // }
         // return $next($request);
     }
 }
