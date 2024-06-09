@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\LogAcessoMiddleware;
+use App\Http\Middleware\AutenticacaoMiddleware;
 
 Route::fallback(function(){echo 'A rota acessada não existe. <a href="' . route('site.index') . '">Clique aqui</a>';});
 Route::middleware(LogAcessoMiddleware::class)->group(function () {
@@ -12,11 +13,11 @@ Route::middleware(LogAcessoMiddleware::class)->group(function () {
 });
 
 
-
-
-Route::prefix('/app')->group(function () {
+Route::prefix('/app')->middleware([LogAcessoMiddleware::class, AutenticacaoMiddleware::class])->group(function () {
     Route::get('/fornecedores', 'App\Http\Controllers\FornecedorController@index')->name('app.fornecedores');
 });
+
+
 
 // // Rota com parâmetros opcionais e validação
 // Route::get('/contato/{nome?}/{categoria?}/{assunto?}/{mensagem?}', function (
