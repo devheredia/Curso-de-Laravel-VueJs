@@ -5,6 +5,10 @@ use App\Http\Middleware\LogAcessoMiddleware;
 use App\Http\Middleware\AutenticacaoMiddleware;
 
 Route::fallback(function(){echo 'A rota acessada não existe. <a href="' . route('site.index') . '">Clique aqui</a>';});
+
+Route::get('/login', 'App\Http\Controllers\LoginController@index')->name('site.login');
+Route::post('/login', 'App\Http\Controllers\LoginController@autenticar')->name('site.login');
+
 Route::middleware(LogAcessoMiddleware::class)->group(function () {
     Route::get('/', 'App\Http\Controllers\PrincipalController@principal')->name('site.index');
     Route::get('/sobre-nos', 'App\Http\Controllers\SobreNosController@sobreNos')->name('site.sobrenos');
